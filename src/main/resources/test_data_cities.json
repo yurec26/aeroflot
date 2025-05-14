@@ -1,0 +1,22 @@
+[
+  {
+    "city": "Москва",
+    "city_code": "MOW"
+  },
+  {
+    "city": "Нью-Йорк",
+    "city_code": "NYC"
+  },
+  {
+    "city": "Лондон",
+    "city_code": "LON"
+  },
+  {
+    "city": "Токио",
+    "city_code": "TYO"
+  },
+  {
+    "city": "Париж",
+    "city_code": "PAR"
+  }
+]
