@@ -1,24 +1,27 @@
 package org.example;
 
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import org.example.steps.HomePageSteps;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
-import static org.example.utils.PropertyReader.getBaseUtl;
-import static org.example.utils.SingletonWebDriver.INSTANCE;
+import static com.codeborne.selenide.Selenide.open;
+import static org.example.utils.PropertyReader.*;
 
 public abstract class BaseTest {
 
     protected HomePageSteps homePageSteps;
 
-    @BeforeMethod
-    protected void setUp() {
-        INSTANCE.getDriver().get(getBaseUtl());
-        homePageSteps = new HomePageSteps();
+    @BeforeSuite
+    protected void suiteSetUp() {
+        Configuration.browser = getBrowser().toString();
+        Configuration.timeout = getTimeout();
     }
 
-    @AfterMethod
-    protected void tearDown() {
-        INSTANCE.quitDriver();
+    @BeforeMethod
+    protected void setUp() {
+        open(getBaseUtl());
+        homePageSteps = new HomePageSteps();
     }
 }

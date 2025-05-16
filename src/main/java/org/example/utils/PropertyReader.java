@@ -12,19 +12,19 @@ public class PropertyReader {
     private static final String CONFIG_FILE = "src/main/resources/config.properties";
 
     public static String getBaseUtl() {
-        return readFromFile(CONFIG_FILE, "base_aeroflot_url");
+        return getProperty("base_aeroflot_url");
     }
 
     public static Browser getBrowser() {
-        return Browser.valueOf(readFromFile(CONFIG_FILE, "browser"));
+        return Browser.valueOf(getProperty("browser"));
     }
 
     public static String getBrowserLang() {
-        return readFromFile(CONFIG_FILE, "browser_lang");
+        return getProperty("browser_lang");
     }
 
     public static String getWindowSize() {
-        return readFromFile(CONFIG_FILE, "window_size");
+        return getProperty("window_size");
     }
 
     public static String getBrowserMode() {
@@ -32,7 +32,17 @@ public class PropertyReader {
     }
 
     public static Integer getTimeout() {
-        return Integer.valueOf(readFromFile(CONFIG_FILE, "timeout"));
+        return Integer.valueOf(getProperty("timeout"));
+    }
+
+    public static Boolean getHeadless() {
+        return Boolean.valueOf(getProperty("headless"));
+    }
+
+    public static String getProperty(String property) {
+        return System.getProperty(property) == null
+                ? readFromFile(CONFIG_FILE, property) :
+                System.getProperty(property);
     }
 
 

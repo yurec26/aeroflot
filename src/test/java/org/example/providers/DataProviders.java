@@ -2,8 +2,7 @@ package org.example.providers;
 
 import org.testng.annotations.DataProvider;
 
-import static org.example.utils.DataReader.getTestCities;
-import static org.example.utils.DataReader.getTestFlight;
+import static org.example.utils.DataReader.*;
 
 public class DataProviders {
 
@@ -17,5 +16,10 @@ public class DataProviders {
     @DataProvider(name = "flights")
     public Object[] flightProvider() {
         return getTestFlight().toArray();
+    }
+
+    @DataProvider(name = "keyword")
+    public Object[] keywordProvider() {
+        return getTestKeywords().toArray();
     }
 }

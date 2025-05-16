@@ -1,36 +1,17 @@
 package org.example.utils;
 
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.Objects;
+import static com.codeborne.selenide.Condition.interactable;
 
 public class WebDriverUtil {
 
-    public static void clearAndFillTheField(WebElement field,
-                                            String text,
-                                            WebDriverWait wait,
-                                            Actions action) {
-        wait.until(ExpectedConditions.visibilityOf(field));
-        clearTheField(field);
-        wait.until(d -> Objects
-                .requireNonNull(field.getAttribute("value")).isEmpty());
-        fillTgeFieldWithText(field, text, action);
-    }
-
-    public static void clearTheField(WebElement field) {
+    public static void clearAndFillTheField(SelenideElement field,
+                                            String text) {
         field.sendKeys(Keys.CONTROL + "a");
         field.sendKeys(Keys.DELETE);
-    }
-
-    public static void fillTgeFieldWithText(WebElement field,
-                                            String text,
-                                            Actions action) {
-        field.sendKeys(text);
-        action.sendKeys(Keys.ENTER)
-                .build().perform();
+        field.shouldBe(interactable).sendKeys(text);
+        field.pressEnter();
     }
 }

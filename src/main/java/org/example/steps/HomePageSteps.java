@@ -8,15 +8,16 @@ import static org.example.utils.DateHelper.getTodayAsString;
 
 public class HomePageSteps {
 
-    HomePageAeroflot homePage = new HomePageAeroflot();
+    private final HomePageAeroflot homePage = new HomePageAeroflot();
 
-    public SearchPageSteps searchTheFlights(Flight flight) {
+    public SearchTicketsPageSteps searchTheFlights(Flight flight) {
+        homePage.acceptRegion();
         homePage.fillDepartureCity(flight.departureCity());
         homePage.fillArrivalCity(flight.arrivalCity());
         homePage.fillDepartureDate(flight.dateTo());
         homePage.fillBackDate(flight.dateBack());
         homePage.pressSubmitButton();
-        return new SearchPageSteps();
+        return new SearchTicketsPageSteps();
     }
 
     public void verifyCorrectUnlocode(String city, String expectedUnlocode) {
@@ -27,8 +28,13 @@ public class HomePageSteps {
     }
 
     public void verifyDefaultFromDateIsToday() {
-        assertThat(homePage.getDateBackField())
+        assertThat(homePage.getDateToField())
                 .as("По умолчанию должна стоять сегодняшняя дата")
                 .isEqualTo(getTodayAsString());
+    }
+
+    public SearchInfoSteps openSearchInfoPage() {
+        homePage.clickSearchButton();
+        return new SearchInfoSteps();
     }
 }
