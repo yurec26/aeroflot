@@ -1,4 +1,3 @@
-//that
 package org.example;
 
 import org.example.model.Flight;

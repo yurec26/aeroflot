@@ -13,7 +13,7 @@ public class DataReader {
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final String TEST_DATA_CITIES_FILE = "src/main/resources/test_data_cities.json";
     private static final String TEST_DATA_FLIGHT_FILE = "src/main/resources/test_data_flight.json";
-    private static final String TEST_DATA_KEYWORDS_FILE = "src/main/resources/test_data_keywords.json";
+    private static final String TEST_DATA_KEYWORDS_FILE = "src/main/resources/test_data_keyword.json";
 
     public static List<City> getTestCities() {
         return readFile(City.class, TEST_DATA_CITIES_FILE);
