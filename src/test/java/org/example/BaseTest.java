@@ -3,6 +3,9 @@ package org.example;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.example.steps.HomePageSteps;
+import org.example.utils.PropertyReader;
+import org.example.utils.WebDriverUtil;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
@@ -15,8 +18,13 @@ public abstract class BaseTest {
 
     @BeforeSuite
     protected void suiteSetUp() {
-        Configuration.browser = getBrowser().toString();
-        Configuration.timeout = getTimeout();
+        WebDriverUtil.setUpDriver();
+//        Configuration.browser = getBrowser().toString();
+//        Configuration.timeout = getTimeout();
+//        Configuration.headless = getHeadless();
+//
+//        Configuration.browserCapabilities = new ChromeOptions()
+//                .addArguments(getUserAgent());
     }
 
     @BeforeMethod

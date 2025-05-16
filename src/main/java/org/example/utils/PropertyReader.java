@@ -19,24 +19,16 @@ public class PropertyReader {
         return Browser.valueOf(getProperty("browser"));
     }
 
-    public static String getBrowserLang() {
-        return getProperty("browser_lang");
-    }
-
-    public static String getWindowSize() {
-        return getProperty("window_size");
-    }
-
-    public static String getBrowserMode() {
-        return readFromFile(CONFIG_FILE, "browser_mode");
-    }
-
     public static Integer getTimeout() {
         return Integer.valueOf(getProperty("timeout"));
     }
 
     public static Boolean getHeadless() {
         return Boolean.valueOf(getProperty("headless"));
+    }
+
+    public static String getUserAgent(){
+        return getProperty("user_agent");
     }
 
     public static String getProperty(String property) {

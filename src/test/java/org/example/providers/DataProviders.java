@@ -18,7 +18,8 @@ public class DataProviders {
         return getTestFlight().toArray();
     }
 
-    @DataProvider(name = "keyword")
+    @DataProvider(name = "keyword",
+            parallel = true)
     public Object[] keywordProvider() {
         return getTestKeywords().toArray();
     }

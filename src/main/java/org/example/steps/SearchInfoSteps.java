@@ -9,22 +9,15 @@ public class SearchInfoSteps {
 
     private SearchInfoPageAeroflot searchInfoPageAeroflot = new SearchInfoPageAeroflot();
 
-
     public SearchInfoSteps performSearch(String text) {
         searchInfoPageAeroflot.fillSearchFieldAndPressEnter(text);
         return this;
     }
 
     public void verifyThatAllResultsContainsKeyword(String keyword) {
-        assertSoftly(softly -> {
-            searchInfoPageAeroflot.getResults()
-                    .forEach(i -> {
-                        assertThat(i)
-                                .as("Статья должна содержать искомое слово %s".formatted(keyword))
-                                .contains(keyword);
-                    });
-        });
-
+        assertSoftly(softly -> searchInfoPageAeroflot.getResults()
+                .forEach(i -> assertThat(i)
+                        .as("Статья должна содержать искомое слово %s".formatted(keyword))
+                        .contains(keyword)));
     }
-
 }

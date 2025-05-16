@@ -12,11 +12,7 @@ public class HomePageSteps {
 
     public SearchTicketsPageSteps searchTheFlights(Flight flight) {
         homePage.acceptRegion();
-        homePage.fillDepartureCity(flight.departureCity());
-        homePage.fillArrivalCity(flight.arrivalCity());
-        homePage.fillDepartureDate(flight.dateTo());
-        homePage.fillBackDate(flight.dateBack());
-        homePage.pressSubmitButton();
+        homePage.searchFlights(flight);
         return new SearchTicketsPageSteps();
     }
 
