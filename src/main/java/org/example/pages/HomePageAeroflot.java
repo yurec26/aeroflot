@@ -8,22 +8,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class HomePageAeroflot extends BasePage {
 
     @FindBy(name = "ticket-city-departure-0-booking")
-    WebElement fromField;
+    private WebElement fromField;
 
     @FindBy(name = "ticket-city-arrival-0-booking")
-    WebElement toField;
+    private WebElement toField;
 
     @FindBy(xpath = "//*[@tabindex='-1']//*[contains(@class,'append')]")
-    WebElement unlocodeFromField;
+    private WebElement unlocodeFromField;
 
     @FindBy(name = "ticket-date-from-booking")
-    WebElement dateToField;
+    private WebElement dateToField;
 
     @FindBy(name = "ticket-date-to-booking")
-    WebElement dateBackField;
+    private WebElement dateBackField;
 
     @FindBy(xpath = "//*[@type='submit']")
-    WebElement submitButton;
+    private WebElement submitButton;
 
 
     public HomePageAeroflot() {

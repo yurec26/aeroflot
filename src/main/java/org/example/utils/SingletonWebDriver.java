@@ -14,7 +14,6 @@ import static org.example.utils.PropertyReader.*;
 public enum SingletonWebDriver {
     INSTANCE;
 
-    //private final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private WebDriver driver;
 
     private void initDriver() {

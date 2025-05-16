@@ -4,10 +4,11 @@ import org.example.model.Flight;
 import org.example.pages.SearchResultPageAeroflot;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 public class SearchPageSteps {
 
-    SearchResultPageAeroflot searchResultPage = new SearchResultPageAeroflot();
+    private final SearchResultPageAeroflot searchResultPage = new SearchResultPageAeroflot();
 
     public SearchPageSteps verifyThatResultSearchRoutes(Flight testFlight) {
         String actualRouteTo = searchResultPage.getSearchResultFlightHeader().getFirst();
@@ -15,12 +16,14 @@ public class SearchPageSteps {
         //
         String expectedRouteTo = testFlight.departureCity() + " — " + testFlight.arrivalCity();
         String expectedRouteBack = testFlight.arrivalCity() + " — " + testFlight.departureCity();
-        assertThat(actualRouteTo)
-                .as("Сформированный путь 'ТУДА' должен совпадать с искомым")
-                .isEqualTo(expectedRouteTo);
-        assertThat(actualRouteBack)
-                .as("Сформированный путь 'ОБРАТНО' должен совпадать с искомым")
-                .isEqualTo(expectedRouteBack);
+        assertSoftly(soft -> {
+            assertThat(actualRouteTo)
+                    .as("Сформированный путь 'ТУДА' должен совпадать с искомым")
+                    .isEqualTo(expectedRouteTo);
+            assertThat(actualRouteBack)
+                    .as("Сформированный путь 'ОБРАТНО' должен совпадать с искомым")
+                    .isEqualTo(expectedRouteBack);
+        });
         return this;
     }
 
@@ -30,12 +33,14 @@ public class SearchPageSteps {
         //
         String expectedDateTo = testFlight.dateTo().split("[^\\w\\s]+")[0];
         String expectedDateBack = testFlight.dateBack().split("[^\\w\\s]+")[0];
-        assertThat(actualDateTo)
-                .as("Должна быть выбрана и подсвечена искомая дата 'ТУДА'")
-                .isEqualTo(expectedDateTo);
-        assertThat(actualDateBack)
-                .as("Должна быть выбрана и подсвечена искомая дата 'Обратно'")
-                .isEqualTo(expectedDateBack);
+        assertSoftly(soft -> {
+            assertThat(actualDateTo)
+                    .as("Должна быть выбрана и подсвечена искомая дата 'ТУДА'")
+                    .isEqualTo(expectedDateTo);
+            assertThat(actualDateBack)
+                    .as("Должна быть выбрана и подсвечена искомая дата 'Обратно'")
+                    .isEqualTo(expectedDateBack);
+        });
         return this;
     }
 }

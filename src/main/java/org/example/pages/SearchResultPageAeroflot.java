@@ -9,10 +9,10 @@ import java.util.List;
 public class SearchResultPageAeroflot extends BasePage {
 
     @FindBy(css = "div.frame__heading.h-pull--left.frame__heading--m24")
-    List<WebElement> routeHeaders;
+    private List<WebElement> routeHeaders;
 
     @FindBy(css = "div.price-chart__col.price-chart__col--active>div>div.price-chart__item-number")
-    List<WebElement> pickedDates;
+    private List<WebElement> pickedDates;
 
     public SearchResultPageAeroflot() {
         super();

@@ -8,7 +8,7 @@ import static org.example.utils.DateHelper.getTodayAsString;
 
 public class HomePageSteps {
 
-    HomePageAeroflot homePage = new HomePageAeroflot();
+    private final HomePageAeroflot homePage = new HomePageAeroflot();
 
     public SearchPageSteps searchTheFlights(Flight flight) {
         homePage.fillDepartureCity(flight.departureCity());
