@@ -37,7 +37,6 @@ public class PropertyReader {
                 System.getProperty(property);
     }
 
-
     private static String readFromFile(String filename, String propName) {
         Properties properties = new Properties();
         try (InputStream inputStream = new FileInputStream(filename)) {

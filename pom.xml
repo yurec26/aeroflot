@@ -17,6 +17,7 @@
         <assertJ.version>3.26.3</assertJ.version>
         <selenide.version>7.9.2</selenide.version>
         <jackson.version>2.18.3</jackson.version>
+        <sudefire.plugin.version>3.5.3</sudefire.plugin.version>
     </properties>
 
     <dependencies>
@@ -47,5 +48,25 @@
             <version>${jackson.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${sudefire.plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            aeroflot.xml
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
+                    <reportsDirectory>
+                        /var/lib/jenkins/workspace/aeroflot
+                    </reportsDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

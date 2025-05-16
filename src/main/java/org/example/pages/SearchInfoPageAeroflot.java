@@ -11,11 +11,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class SearchInfoPageAeroflot extends BasePage {
 
-
     private final SelenideElement searchField = element(By.id("search"));
     private final ElementsCollection results = $$("yass-div.b-serp-item__text");
     private final SelenideElement yandexLogo = $(".b-head__logo");
-
 
     public SearchInfoPageAeroflot() {
         super();
