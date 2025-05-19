@@ -1,25 +1,33 @@
 package org.example;
 
+import io.qameta.allure.*;
 import org.example.model.Flight;
 import org.example.providers.DataProviders;
 import org.testng.annotations.Test;
 
+@Epic("Поиск авиабилетов")
+@Feature("Форма поиска авиабилетов с главной страницы")
 public class TestCaseOne extends BaseTest {
 
-    @Test(testName = "Проверка совпадения города и его международного кода",
-            dataProvider = "cities_unlocodes",
+    @Description("Проверка совпадения города и его международного кода")
+    @Severity(SeverityLevel.MINOR)
+    @Test(dataProvider = "cities_unlocodes",
             dataProviderClass = DataProviders.class)
     public void testCityUnlocodeIsCorrect(String city, String code) {
         homePageSteps.verifyCorrectUnlocode(city, code);
     }
 
-    @Test(testName = "Проверка даты в поле отправления по умолчанию")
+    @Description("Проверка даты в поле отправления по умолчанию")
+    @Severity(SeverityLevel.NORMAL)
+    @Test()
     public void testDefaultFromDate() {
         homePageSteps.verifyDefaultFromDateIsToday();
     }
 
-    @Test(testName = "Проверка поиска билетов и проверка пути и дат на странице результатов",
-            dataProvider = "flights",
+    @Description("Проверка поиска билетов и проверка пути и дат на странице результатов")
+    @Story("Пользователь производит поиск билетов с валидными данными")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(dataProvider = "flights",
             dataProviderClass = DataProviders.class)
     public void testSearchResultFlightData(Flight flight) {
         homePageSteps.searchTheFlights(flight)

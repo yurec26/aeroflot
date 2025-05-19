@@ -1,5 +1,7 @@
 package org.example.steps;
 
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.example.model.Flight;
 import org.example.pages.HomePageAeroflot;
 
@@ -10,6 +12,7 @@ public class HomePageSteps {
 
     private final HomePageAeroflot homePage = new HomePageAeroflot();
 
+    @Step("Пользователь вводит валидные данные для поиска авиабилета")
     public SearchTicketsPageSteps searchTheFlights(Flight flight) {
         homePage.acceptRegion();
         homePage.searchFlights(flight);
@@ -29,6 +32,7 @@ public class HomePageSteps {
                 .isEqualTo(getTodayAsString());
     }
 
+    @Step("Пользователь открывает страницу поиска")
     public SearchInfoSteps openSearchInfoPage() {
         homePage.clickSearchButton();
         return new SearchInfoSteps();

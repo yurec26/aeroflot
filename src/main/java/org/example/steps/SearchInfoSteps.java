@@ -1,5 +1,6 @@
 package org.example.steps;
 
+import io.qameta.allure.Step;
 import org.example.pages.SearchInfoPageAeroflot;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -7,8 +8,9 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 public class SearchInfoSteps {
 
-    private SearchInfoPageAeroflot searchInfoPageAeroflot = new SearchInfoPageAeroflot();
+    private final SearchInfoPageAeroflot searchInfoPageAeroflot = new SearchInfoPageAeroflot();
 
+    @Step("Пользователь вводит ключевое слово и нажимает enter")
     public SearchInfoSteps performSearch(String text) {
         searchInfoPageAeroflot.fillSearchFieldAndPressEnter(text);
         return this;

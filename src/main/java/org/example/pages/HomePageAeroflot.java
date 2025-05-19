@@ -7,7 +7,7 @@ import org.example.model.Flight;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-public class HomePageAeroflot extends BasePage {
+public class HomePageAeroflot {
 
     private final TicketSearchPanel ticketSearchPanel = new TicketSearchPanel();
     private final SelenideElement uniqElement = $("input#code\\&number");
@@ -15,7 +15,6 @@ public class HomePageAeroflot extends BasePage {
     private final SelenideElement searchButton = $("a.main-module__header__search");
 
     public HomePageAeroflot() {
-        super();
         uniqElement.shouldBe(visible);
     }
 

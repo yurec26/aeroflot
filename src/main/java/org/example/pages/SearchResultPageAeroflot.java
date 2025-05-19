@@ -8,16 +8,12 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$$;
 
-public class SearchResultPageAeroflot extends BasePage {
+public class SearchResultPageAeroflot{
 
     private final ElementsCollection routeHeaders = $$("div.frame__heading." +
             "h-pull--left.frame__heading--m24");
     private final ElementsCollection pickedDates = $$("div.price-chart__col." +
             "price-chart__col--active>div>div.price-chart__item-number");
-
-    public SearchResultPageAeroflot() {
-        super();
-    }
 
     public List<String> getSearchResultFlightHeader() {
         return routeHeaders.shouldBe(CollectionCondition.sizeGreaterThan(0))
